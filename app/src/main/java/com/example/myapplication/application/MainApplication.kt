@@ -6,8 +6,8 @@ import android.content.Context
 import android.support.v7.app.AppCompatDelegate
 import com.example.myapplication.presentation.di.AppModule
 import com.example.myapplication.presentation.di.NetworkModule
-import com.example.myapplication.data.remote.networkservice.BASE_URL
 import com.example.myapplication.presentation.di.DaggerAppComponent
+import com.example.myapplication.presentation.utils.BASE_URL
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
@@ -28,7 +28,7 @@ class MainApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
 
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         super.onCreate()
         appContext = applicationContext
 

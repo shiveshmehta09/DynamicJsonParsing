@@ -3,13 +3,8 @@ package com.example.myapplication.presentation.albums.activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.example.myapplication.R
-import com.example.myapplication.data.remote.models.TabList
-import com.example.myapplication.data.remote.networkservice.Api
-import com.example.myapplication.data.remote.networkservice.ApiClient
 import com.example.myapplication.domain.entity.TabListEntity
 import com.example.myapplication.presentation.TabData
 import com.example.myapplication.presentation.albums.adapter.AlubumsPagerAdapter
@@ -18,9 +13,6 @@ import com.example.myapplication.presentation.albums.viewstate.MainViewState
 import com.example.myapplication.presentation.factory.ViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 /**
@@ -55,21 +47,6 @@ class MainActivity : DaggerAppCompatActivity() {
             setAdapter(it)
         })
 
-
-        /* val api = ApiClient.getClient().create(Api::class.java)
-         api.getTabs().enqueue(object : Callback<TabList> {
-             override fun onFailure(call: Call<TabList>, t: Throwable) {
-                 progressBar.visibility = View.GONE
-                 Toast.makeText(this@MainActivity, t.localizedMessage, Toast.LENGTH_LONG).show()
-             }
-
-             override fun onResponse(call: Call<TabList>, response: Response<TabList>) {
-                 Log.d("ReponseData", response.body().toString())
-                 progressBar.visibility = View.GONE
-                 response.body()?.let { setAdapter(it) }
-             }
-
-         })*/
     }
 
     private fun renderView(viewState: MainViewState) {

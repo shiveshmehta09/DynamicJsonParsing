@@ -9,6 +9,7 @@ import android.arch.lifecycle.Transformations
  * Email Id shiveshmehta09@gmail.com
  */
 const val GET_PHOTOS = "get_photos"
+const val BASE_URL = "https://affiliate-api.flipkart.net/affiliate/"
 
 /** Uses `Transformations.map` on a LiveData */
 fun <X, Y> LiveData<X>.map(body: (X) -> Y): LiveData<Y> {

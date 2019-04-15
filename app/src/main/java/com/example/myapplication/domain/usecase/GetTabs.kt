@@ -2,6 +2,7 @@ package com.example.myapplication.domain.usecase
 
 import com.example.myapplication.domain.MainRepository
 import com.example.myapplication.domain.entity.TabListEntity
+import com.example.myapplication.presentation.TabData
 import javax.inject.Inject
 
 
@@ -12,10 +13,23 @@ import javax.inject.Inject
 
 class GetTabs @Inject constructor(
     private val mainRepository: MainRepository
-) : UseCase<Unit, TabListEntity?>() {
-    override fun execute(parameters: Unit): TabListEntity? {
+) : UseCase<Unit, List<TabData>?>() {
+    override fun execute(parameters: Unit): List<TabData>? {
         val getTabs = mainRepository.getTabs() ?: return null
-        return getTabs
+
+        val tabData = mutableListOf<TabData>()
+        getTabs.apiGroups?.affiliate?.apiListings?.forEach {
+            val key = it.key
+            val value = it.value
+            tabData.add(
+                TabData(
+                    key,
+                    value.version1?.version1?.getPhotos
+                )
+            )
+        }
+
+        return tabData
     }
 
 }

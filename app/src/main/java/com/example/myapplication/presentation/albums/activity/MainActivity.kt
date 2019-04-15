@@ -44,7 +44,11 @@ class MainActivity : DaggerAppCompatActivity() {
         })
 
         viewModel.tabLiveData.observe(this, Observer {
-            setAdapter(it)
+         //   setAdapter(it)
+            val adapter = AlubumsPagerAdapter(supportFragmentManager, it!!.toMutableList())
+
+            pager.adapter = adapter
+            tabLayout.setupWithViewPager(pager)
         })
 
     }
@@ -61,7 +65,7 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
 
-    private fun setAdapter(list: TabListEntity?) {
+    /*private fun setAdapter(list: TabListEntity?) {
         val tabData = mutableListOf<TabData>()
         list?.apiGroups?.affiliate?.apiListings?.forEach {
             val key = it.key
@@ -77,5 +81,5 @@ class MainActivity : DaggerAppCompatActivity() {
         val adapter = AlubumsPagerAdapter(supportFragmentManager, tabData)
         pager.adapter = adapter
         tabLayout.setupWithViewPager(pager)
-    }
+    }*/
 }
